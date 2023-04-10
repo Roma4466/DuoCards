@@ -14,3 +14,4 @@ class DataList:
         self.min_value = min(data_list)
         self.min_date = self.calendar[data_list.index(self.min_value)]
         self.name = name
+        self.sum = sum(data_list)

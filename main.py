@@ -1,5 +1,5 @@
 from openpyxl import load_workbook
-from DataPrinter import DataPrinter
+from DataAnalyzer import DataAnalyzer
 
 file_name = "Copy.xlsx"
 
@@ -32,7 +32,7 @@ added_list = list(added.values())
 fire_list = list(fire.values())
 calendar = list(checked.keys())
 
-data_printer = DataPrinter(
+data_printer = DataAnalyzer(
     calendar,
     file_name,
     (added_copy_list, "Added copy"),
@@ -41,3 +41,4 @@ data_printer = DataPrinter(
     (fire_list, "Fire")
 )
 data_printer.do_analytics()
+
