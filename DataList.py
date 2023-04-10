@@ -3,7 +3,7 @@ from scipy import stats
 
 
 class DataList:
-    def __init__(self, data_list, calendar):
+    def __init__(self, data_list, calendar, name):
         self.data_list = data_list
         self.calendar = calendar
         self.mode = stats.mode(data_list, keepdims=False)[0]
@@ -13,3 +13,4 @@ class DataList:
         self.max_date = self.calendar[data_list.index(self.max_value)]
         self.min_value = min(data_list)
         self.min_date = self.calendar[data_list.index(self.min_value)]
+        self.name = name
