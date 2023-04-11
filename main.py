@@ -1,5 +1,6 @@
 from openpyxl import load_workbook
 from DataAnalyzer import DataAnalyzer
+import collections
 
 file_name = "Copy.xlsx"
 
@@ -41,4 +42,3 @@ data_printer = DataAnalyzer(
     (fire_list, "Fire")
 )
 data_printer.do_analytics()
-

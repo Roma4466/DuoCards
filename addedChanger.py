@@ -25,6 +25,7 @@ for row in sheet.iter_rows(min_row=2, max_row=sheet.max_row):
             print("Previous sum:", data_sum)
             print("Actual sum:", actual)
             print("Difference:", data_sum - actual)
+            print("Was:", row[1].value)
             row[1].value -= (data_sum - actual)
             print("New value:", row[1].value)
             print()
