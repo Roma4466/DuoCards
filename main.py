@@ -1,6 +1,16 @@
+"""
+This file reads data.xlxs,
+puts data into dataHolder DTO
+and starts data analytic
+"""
+
 from openpyxl import load_workbook
-from DataAnalyzer import DataAnalyzer
-import collections
+from data_analyzer import draw_graphics
+from data_list import *
+from data_printer import prints_lists_values
+from sklearn.linear_model import LinearRegression
+import matplotlib.dates as mdates
+import pie
 
 file_name = "Copy.xlsx"
 
@@ -33,12 +43,32 @@ added_list = list(added.values())
 fire_list = list(fire.values())
 calendar = list(checked.keys())
 
-data_printer = DataAnalyzer(
-    calendar,
-    file_name,
-    (added_copy_list, "Added copy"),
-    (added_list, "Added real"),
-    (checked_list, "Checked"),
-    (fire_list, "Fire")
-)
-data_printer.do_analytics()
+pie.show_pie(added_copy)
+
+# data_printer = DataHolder(
+#     calendar,
+#     file_name,
+#     (added_copy_list, "Added copy"),
+#     (added_list, "Added real"),
+#     (checked_list, "Checked"),
+#     (fire_list, "Fire")
+# )
+# prints_lists_values(data_printer)
+# try:
+#     draw_graphics(data_printer, float(input("Write down pause time: ")))
+# except:
+#     draw_graphics(data_printer, 0.01)
+
+# new_list = [i * 30 for i in fire_list]
+# ratio_list = [new_list[i] / checked_list[i] for i in range(len(checked_list))]
+# data_printer_2 = DataHolder(
+#     calendar,
+#     file_name,
+#     (ratio_list, "new_list / checked_list")
+# )
+# prints_lists_values(data_printer_2)
+#
+# try:
+#     draw_graphics(data_printer_2, float(input("Write down pause time: ")))
+# except:
+#     draw_graphics(data_printer_2, 0.01)
