@@ -43,21 +43,22 @@ added_list = list(added.values())
 fire_list = list(fire.values())
 calendar = list(checked.keys())
 
-pie.show_pie(added_copy)
+pie.show_pies((fire, "fire"), (checked, "checked"), (added, "added from data.xlxs"), (added_copy, "added actual"))
 
-# data_printer = DataHolder(
-#     calendar,
-#     file_name,
-#     (added_copy_list, "Added copy"),
-#     (added_list, "Added real"),
-#     (checked_list, "Checked"),
-#     (fire_list, "Fire")
-# )
-# prints_lists_values(data_printer)
-# try:
-#     draw_graphics(data_printer, float(input("Write down pause time: ")))
-# except:
-#     draw_graphics(data_printer, 0.01)
+data_printer = DataHolder(
+    calendar,
+    file_name,
+    (added_copy_list, "Added copy"),
+    (added_list, "Added real"),
+    (checked_list, "Checked"),
+    (fire_list, "Fire")
+)
+
+prints_lists_values(data_printer)
+try:
+    draw_graphics(data_printer, float(input("Write down pause time: ")))
+except:
+    draw_graphics(data_printer, 0.01)
 
 # new_list = [i * 30 for i in fire_list]
 # ratio_list = [new_list[i] / checked_list[i] for i in range(len(checked_list))]

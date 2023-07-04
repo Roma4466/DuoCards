@@ -12,7 +12,8 @@ from data_printer import print_values
 
 def draw_graphics(data_holder, pause_time):
     # lingeress_without_animation(data_holder)
-    moving_average_several_windows(data_holder, pause_time)
+    # moving_average_several_windows(data_holder, pause_time)
+    moving_average_several_windows_instant(data_holder)
     # print_ratio(data_holder.data_lists[2].data_list, data_holder.data_lists[0].data_list, data_holder.calendar)
 
 
@@ -74,6 +75,24 @@ def moving_average_several_windows(data_holder, pause_time):
     plt.show()
 
 
+def moving_average_several_windows_instant(data_holder):
+    for i, data_list in enumerate(data_holder.data_lists):
+        plt.figure()  # Create a new figure for each graph
+
+        rolling_mean = pd.Series(data_list.data_list).rolling(window=7).mean()
+        plt.plot(data_holder.calendar, data_list.data_list, label="Values line")
+        plt.plot(data_holder.calendar, rolling_mean, 'r', label="Rolling mean line")
+        plt.axhline(data_list.mean, linestyle='--', color='red', label='Mean')
+        cumulative_mean = pd.Series(data_list.data_list).expanding().mean()  # Calculate cumulative mean
+        plt.plot(data_holder.calendar, cumulative_mean, 'y', label="Mean line")  # Plot cumulative mean
+        plt.ylabel(data_list.name)
+        plt.xlabel('Date')
+        plt.title(data_holder.comment)
+        plt.legend()
+
+    plt.show()
+
+
 def moving_average_one_window(data_holder):
     fig, axs = plt.subplots(len(data_holder.data_lists), 1)
     for i, data_list in enumerate(data_holder.data_lists):
@@ -103,3 +122,5 @@ def print_ratio(checked, added, calendar):
 def show_data_on_graphic(data_list, calendar):
     plt.plot(calendar, data_list)
     plt.show()
+
+#%%

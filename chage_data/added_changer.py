@@ -4,7 +4,7 @@ from data_analyzer import draw_graphics
 from data_list import DataHolder
 from data_printer import prints_lists_values
 
-data = load_workbook('data.xlsx')
+data = load_workbook('D:/Roman/proga/python/DuoCards/data.xlsx')
 sheet = data.active
 
 previous = 0
@@ -63,5 +63,4 @@ try:
     draw_graphics(data_printer, float(input("Write down pause time: ")))
 except:
     draw_graphics(data_printer, 0.01)
-
 #%%

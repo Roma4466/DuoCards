@@ -21,4 +21,5 @@ class DataHolder:
         self.data_lists = [
             DataList(data_list[0], data_list[1]) for data_list in data_lists
         ]
+        self.comment = comment
         self.calendar = calendar

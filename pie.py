@@ -1,18 +1,19 @@
+import matplotlib
 import matplotlib.pyplot as plt
 import datetime
 
 
-def show_pie(added_copy):
-    # Обчислення загальної суми значень
-    total_sum = sum(added_copy.values())
+def show_pies(*tuples):
+    for dictionary_and_name in tuples:
+        show_pie(dictionary_and_name[0], dictionary_and_name[1])
 
-    # Створення списку для місяців та суми значень
+
+def show_pie(dictionary, name):
     months = []
     sums = []
 
-    # Отримання місяця та суми значень для кожного елемента словника
-    for date, value in added_copy.items():
-        month = date.strftime('%B')  # Отримання назви місяця
+    for date, value in dictionary.items():
+        month = date.strftime('%B')
         if month not in months:
             months.append(month)
             sums.append(0)
@@ -21,12 +22,10 @@ def show_pie(added_copy):
 
     def autopct_format(percentage):
         total = sum(sums)
-        value = total * percentage/ 100
+        value = total * percentage / 100
         return f'{percentage:.1f}%\n{value:.0f}'
 
     plt.pie(sums, labels=months, autopct=autopct_format)
 
-    # Додавання заголовка та відображення діаграми
-    plt.title('Monthly Distribution')
+    plt.title(f'Monthly Distribution of {name}')
     plt.show()
-
